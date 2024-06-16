@@ -50,6 +50,11 @@ from activity
 where activity_date between '2019-06-28' and '2019-07-27'
 group by activity_date;
 
+/* where activity_date between date_sub('2019-07-27', interval 29 day) and '2019-07-27'
+
+where datediff('2019-07-27', activity_date)<30 
+and activity_date <= '2019-07-27' */
+
 -- exercise 8
 select
 count(id) as number_employees_hired

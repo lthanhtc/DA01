@@ -107,6 +107,14 @@ SELECT
 FROM PAYMENTS
 WHERE TIME_DIFF <= 10
 
+ /* EXTRACT(EPOCH FROM transaction_timestamp - 
+     LAG(transaction_timestamp) OVER
+      (PARTITION BY merchant_id, credit_card_id, amount 
+      ORDER BY transaction_timestamp))/60 AS minute_difference
+
+EPOCH calculates the total number of SECONDS in a given interval. 
+To transfer into MINUTES, we divide theses seconds by 60 (1 minute = 60 seconds) */
+
 -- EXERCISE 7
 WITH ELECTRONICS_RANKED_PRODUCTS
 AS
